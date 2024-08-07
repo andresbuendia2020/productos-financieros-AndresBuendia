@@ -1,0 +1,25 @@
+<div class="product-list-container">
+  <h2 class="table-title">Lista de Productos</h2>
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Logo</th>
+        <th>Fecha de Liberación</th>
+        <th>Fecha de Revisión</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td><img [src]="product.logo" alt="{{ product.name }}" class="product-logo" /></td>
+        <td>{{ product.releaseDate }}</td>
+        <td>{{ product.reviewDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

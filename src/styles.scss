@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+.header {
+	height: 55px;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.iconDinner {
+	height: 30px;
+	gap: 5px;
+}
+
+.textBank {
+	font-family: fangsong;
+	font-weight: 600;
+	color: #273c6d;
+	margin: 8px 0 0 12px;
+	height: 30px;
+	gap: 5px;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f6f9
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+.error {
+	color: red;
+	font-size: 0.875em;
+}
+
+button {
+	padding: 10px 15px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+button:disabled {
+	background-color: #cccccc;
+}

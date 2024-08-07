@@ -1,0 +1,74 @@
+.container {
+	height: calc(100vh - 55px);
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+
+	&__form {
+		width: 50%;
+    background: #ffffff;
+		max-height: 50%;
+    display: flex;
+    justify-content: center;
+	}
+}
+
+.form {
+	width: 80%;
+}
+
+.form-title {
+	text-align: center;
+	border-bottom: 2px solid lightgray;
+	padding-bottom: 15px;
+}
+
+.form-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.form-group {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.form-control {
+	height: 20px;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.button-group {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 20px;
+}
+
+.btn-submit {
+	background-color: #f0b631;
+	color: black;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.btn-submit:disabled {
+	background-color: #fef1a4;
+	cursor: not-allowed;
+	color: gray;
+}
+.form-group small {
+  color: red; /* Set the validation messages color to red */
+}
+
+.btn-reset {
+	background-color: #eaecf3;
+	color: #485983;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+}
