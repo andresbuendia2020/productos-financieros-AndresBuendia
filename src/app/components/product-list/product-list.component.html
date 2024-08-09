@@ -1,25 +1,43 @@
 <div class="product-list-container">
-  <h2 class="table-title">Lista de Productos</h2>
+  <div class="table-header">
+    <input
+      type="text"
+      placeholder="Search..."
+      class="search-input"
+      (ngModel)="searchQuery"
+    />
+    <button class="add-button" (click)="onAddProduct()">Agregar</button>
+  </div>
+
   <table class="product-table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Descripción</th>
         <th>Logo</th>
-        <th>Fecha de Liberación</th>
-        <th>Fecha de Revisión</th>
+        <th>Nombre del producto</th>
+        <th>Descripción</th>
+        <th>Fecha de liberación</th>
+        <th>Fecha de reestructuración</th>
+        <th></th> <!-- Columna para el menú contextual -->
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.id }}</td>
+      <tr *ngFor="let product of filteredProducts()">
+        <td><img [src]="product.logo" alt="{{ product.name }}" class="product-logo" /></td>
         <td>{{ product.name }}</td>
         <td>{{ product.description }}</td>
-        <td><img [src]="product.logo" alt="{{ product.name }}" class="product-logo" /></td>
-        <td>{{ product.releaseDate }}</td>
-        <td>{{ product.reviewDate }}</td>
+        <td>{{ product.date_release | date }}</td>
+        <td>{{ product.date_revision | date }}</td>
+        <td><button class="menu-button">⋮</button></td> <!-- Menú contextual -->
       </tr>
     </tbody>
   </table>
+
+  <div class="table-footer">
+    <span>{{ products.length }} Resultados</span>
+    <select class="results-select">
+      <option>5</option>
+      <option>10</option>
+      <option>20</option>
+    </select>
+  </div>
 </div>

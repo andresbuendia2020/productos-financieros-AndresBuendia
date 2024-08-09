@@ -21,15 +21,15 @@ export class ProductFormComponent {
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
       description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       logo: ['', Validators.required],
-      releaseDate: ['', Validators.required],
-      reviewDate: [{ value: '', disabled: true }, Validators.required]
+      date_release: ['', Validators.required],
+      date_revision: [{ value: '', disabled: true }, Validators.required]
     });
 
-    this.productForm.get('releaseDate')?.valueChanges.subscribe(date => {
+    this.productForm.get('date_release')?.valueChanges.subscribe(date => {
       if (date) {
-        const reviewDate = new Date(date);
-        reviewDate.setFullYear(reviewDate.getFullYear() + 1);
-        this.productForm.get('reviewDate')?.setValue(reviewDate.toISOString().substring(0, 10));
+        const date_revision = new Date(date);
+        date_revision.setFullYear(date_revision.getFullYear() + 1);
+        this.productForm.get('date_revision')?.setValue(date_revision.toISOString().substring(0, 10));
       }
     });
   }

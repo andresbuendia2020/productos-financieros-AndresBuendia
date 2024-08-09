@@ -86,45 +86,45 @@
                 >Logo es requerido.</small
               >
             </div>
-          </div>
+          </div>    
 
           <div class="form-group">
-            <label for="releaseDate">Fecha de Liberación</label>
+            <label for="date_release">Fecha de Liberación</label>
             <input
-              id="releaseDate"
+              id="date_release"
               type="date"
-              formControlName="releaseDate"
+              formControlName="date_release"
               class="form-control"
             />
             <div
               *ngIf="
-                productForm.get('releaseDate')?.invalid &&
-                productForm.get('releaseDate')?.touched
+                productForm.get('date_release')?.invalid &&
+                productForm.get('date_release')?.touched
               "
             >
               <small
-                *ngIf="productForm.get('releaseDate')?.errors?.['required']"
+                *ngIf="productForm.get('date_release')?.errors?.['required']"
                 >Fecha de Liberación es requerida.</small
               >
             </div>
           </div>
 
           <div class="form-group">
-            <label for="reviewDate">Fecha de Revisión</label>
+            <label for="date_revision">Fecha de Revisión</label>
             <input
-              id="reviewDate"
+              id="date_revision"
               type="date"
-              formControlName="reviewDate"
+              formControlName="date_revision"
               class="form-control"
               [disabled]="true"
             />
             <div
               *ngIf="
-                productForm.get('reviewDate')?.invalid &&
-                productForm.get('reviewDate')?.touched
+                productForm.get('date_revision')?.invalid &&
+                productForm.get('date_revision')?.touched
               "
             >
-              <small *ngIf="productForm.get('reviewDate')?.errors?.['required']"
+              <small *ngIf="productForm.get('date_revision')?.errors?.['required']"
                 >Fecha de Revisión es requerida.</small
               >
             </div>

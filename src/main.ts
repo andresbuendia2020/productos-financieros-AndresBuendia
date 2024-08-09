@@ -1,20 +1,20 @@
-import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
-import { ProductFormComponent } from './app/components/product-form/product-form.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Routes, provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
 import { ProductListComponent } from './app/components/product-list/product-list.component';
+import { ProductFormComponent } from './app/components/product-form/product-form.component';
+import { AppComponent } from './app/app.component';
 
+const routes: Routes = [
+  { path: 'products', component: ProductListComponent },
+  { path: 'register', component: ProductFormComponent },
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: '**', redirectTo: '/products' },
+];
 
-// bootstrapApplication(ProductFormComponent, {
-//   providers: [
-//     importProvidersFrom(HttpClientModule, ReactiveFormsModule)
-//   ]
-// });
-
-bootstrapApplication(ProductListComponent, {
+bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(HttpClientModule, ReactiveFormsModule)
+    provideRouter(routes),
+    provideHttpClient()
   ]
 });
