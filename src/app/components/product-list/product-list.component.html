@@ -1,43 +1,60 @@
-<div class="product-list-container">
-  <div class="table-header">
-    <input
-      type="text"
-      placeholder="Search..."
-      class="search-input"
-      (ngModel)="searchQuery"
-    />
-    <button class="add-button" (click)="onAddProduct()">Agregar</button>
+<div class="container">
+  <div class="product-list-container">
+    <div class="table-header">
+      <input
+        type="text"
+        placeholder="Search..."
+        class="search-input"
+        [(ngModel)]="searchQuery"
+      />
+      <button class="add-button" (click)="onAddProduct()">Agregar</button>
+    </div>
+  
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Logo</th>
+          <th>Nombre del producto</th>
+          <th>Descripción</th>
+          <th>Fecha de liberación</th>
+          <th>Fecha de reestructuración</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts">
+          <td><img [src]="product.logo" alt="{{ product.name }}" class="product-logo" /></td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.date_release | date }}</td>
+          <td>{{ product.date_revision | date }}</td>
+          <td><button class="menu-button" (click)="toggleMenu(product.id)">⋮</button>
+            <div *ngIf="openMenuProductId === product.id" class="dropdown-menu">
+              <button class="edit-button" (click)="editProduct(product.id)">Editar</button>
+              <button class="delete-button" (click)="openModal(product)">Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="table-footer">
+      <span>{{ products.length }} Resultados</span>
+      <select class="results-select" [(ngModel)]="pageSize" (change)="onPageSizeChange($event)">
+        <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
+      </select>
+    </div>
   </div>
+</div>
 
-  <table class="product-table">
-    <thead>
-      <tr>
-        <th>Logo</th>
-        <th>Nombre del producto</th>
-        <th>Descripción</th>
-        <th>Fecha de liberación</th>
-        <th>Fecha de reestructuración</th>
-        <th></th> <!-- Columna para el menú contextual -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of filteredProducts()">
-        <td><img [src]="product.logo" alt="{{ product.name }}" class="product-logo" /></td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.description }}</td>
-        <td>{{ product.date_release | date }}</td>
-        <td>{{ product.date_revision | date }}</td>
-        <td><button class="menu-button">⋮</button></td> <!-- Menú contextual -->
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="table-footer">
-    <span>{{ products.length }} Resultados</span>
-    <select class="results-select">
-      <option>5</option>
-      <option>10</option>
-      <option>20</option>
-    </select>
+<div *ngIf="isModalOpen" class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-content">
+      <p>¿Estás seguro de eliminar el producto {{ selectedProduct?.name }}?</p>
+      <div class="modal-actions">
+        <button (click)="closeModal()" class="cancel-button">Cancelar</button>
+        <button (click)="confirmDelete()" class="confirm-button">Confirmar</button>
+      </div>
+    </div>
   </div>
 </div>

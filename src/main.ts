@@ -5,13 +5,16 @@ import { ProductListComponent } from './app/components/product-list/product-list
 import { ProductFormComponent } from './app/components/product-form/product-form.component';
 import { AppComponent } from './app/app.component';
 
+// Definición de las rutas
 const routes: Routes = [
   { path: 'products', component: ProductListComponent },
   { path: 'register', component: ProductFormComponent },
+  { path: 'edit/:id', component: ProductFormComponent },
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: '**', redirectTo: '/products' },
 ];
 
+// Configuración de la aplicación con las rutas
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
